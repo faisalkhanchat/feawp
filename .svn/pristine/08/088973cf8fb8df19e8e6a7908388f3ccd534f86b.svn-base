@@ -1,0 +1,103 @@
+<?php
+ /*
+ Template Name: 3D Printer Details page
+ */
+
+get_header(); ?>
+<?php
+$header_image = get_field( "upload_header_banner_image" );
+$sub_title = get_field( "sub_title" );
+$short_description = get_field( "short_description" );
+$product_specification_title = get_field( "product_specification_title" );
+$product_specification_content = get_field( "product_specification_content" );
+?>
+
+<section class="inr_header_product" style="background-image:url(<?php echo $header_image ?>)">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1 class="product_title"><?php echo the_title(); ?></h1>
+                <h2 class="cat_title"><?php echo $sub_title; ?></h2>
+                <p class="p_short_des"><?php echo $short_description; ?></p>
+                <a href="" class="btn btn-lg btn_get_a_quote">Get a quote</a>
+                <a href="" class="btn btn-lg btn_contact_sales">Contact Sales</a>
+            </div>
+        </div>
+    </div>
+    
+</section>
+
+<?php
+while ( have_posts() ) : the_post();
+the_content();
+endwhile; 
+wp_reset_query(); 
+?>
+ 
+    <div class="product_slider">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <div class="img_pro_caresoul owl-carousel owl-theme">
+                        <div class="imgthumb">
+                             <img src="http://www.fea-tc.com/products/3DPrinter/MakerBot/images/makerbolt/thumbs/makerbolt-img3.jpg" alt="">
+                        </div>
+                        <div class="imgthumb">
+                             <img src="http://www.fea-tc.com/products/3DPrinter/MakerBot/images/makerbolt/thumbs/makerbolt-img4.jpg" alt="">
+                        </div>
+                        <div class="imgthumb">
+                             <img src="http://www.fea-tc.com/products/3DPrinter/MakerBot/images/makerbolt/thumbs/makerbolt-img4.jpg" alt="">
+                        </div>
+                        <div class="imgthumb">
+                             <img src="http://www.fea-tc.com/products/3DPrinter/MakerBot/images/makerbolt/thumbs/makerbolt-img4.jpg" alt="">
+                        </div>
+                        <div class="imgthumb">
+                             <img src="http://www.fea-tc.com/products/3DPrinter/MakerBot/images/makerbolt/thumbs/makerbolt-img4.jpg" alt="">
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="products_tabs">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                   
+                    <h2 class="sec_title_pro">	<?php echo $product_specification_title ?></h2>                     
+               
+                </div>
+            </div>
+        </div>
+        <?php echo $product_specification_content ;?>
+    </div>
+
+
+
+<?php get_footer(); ?>
+
+<script>
+$.get("<?php echo get_bloginfo('stylesheet_directory'); ?>/assets/js/OwlCarousel2Thumbs.min.js", function(){
+    var owl = $('.img_pro_caresoul');
+    owl.owlCarousel({
+        loop: false,
+        margin:10,
+        items: 1,
+        nav: true,
+        dots:false,
+        thumbs: true,
+        thumbImage: true,
+        thumbContainerClass: 'owl-thumbs',
+        thumbItemClass: 'owl-thumb-item',
+        
+    });
+$( ".img_pro_caresoul .owl-prev").html('<i class="fa fa-angle-left"></i>');
+$( ".img_pro_caresoul .owl-next").html('<i class="fa fa-angle-right"></i>');
+
+});
+    
+</script>
+
